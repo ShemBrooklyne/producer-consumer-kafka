@@ -18,10 +18,8 @@ public record Employee(
         @Field(type = FieldType.Text, name = "lastName")
         String lastName,
         @Field(type = FieldType.Text, name = "identificationNumber")
-
         String identificationNumber,
         @Field(type = FieldType.Nested, name = "department")
-
         Department department
 ) {
 }
