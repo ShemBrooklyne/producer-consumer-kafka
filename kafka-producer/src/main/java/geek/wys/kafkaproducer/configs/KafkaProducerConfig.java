@@ -1,5 +1,6 @@
 package geek.wys.kafkaproducer.configs;
 
+import geek.wys.kafkaproducer.models.Employee;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +21,7 @@ import java.util.Map;
 public class KafkaProducerConfig {
 
     @Bean
-    public ProducerFactory<String, Object> employeeProducerFactory() {
+    public ProducerFactory<String, Employee> employeeProducerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:9092");
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
@@ -29,7 +30,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, Object> employeeKafkaTemplate() {
+    public KafkaTemplate<String, Employee> employeeKafkaTemplate() {
         return new KafkaTemplate<>(employeeProducerFactory());
     }
 }
