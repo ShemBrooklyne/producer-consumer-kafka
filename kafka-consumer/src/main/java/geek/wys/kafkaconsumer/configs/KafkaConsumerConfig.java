@@ -27,7 +27,7 @@ public class KafkaConsumerConfig {
     @Bean
     public ConsumerFactory<String, Employee> employeeConsumerFactory() {
         Map<String, Object> consumerProps = new HashMap<>();
-        consumerProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:9092");
+        consumerProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "9092:9092");
         consumerProps.put(ConsumerConfig.GROUP_ID_CONFIG, "geekwys");
         return new DefaultKafkaConsumerFactory<>(consumerProps,
                 new StringDeserializer(), new JsonDeserializer<>(Employee.class));
