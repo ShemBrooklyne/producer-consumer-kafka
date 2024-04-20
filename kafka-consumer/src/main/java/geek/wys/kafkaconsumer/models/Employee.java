@@ -9,7 +9,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  * @author shem.mwangi
  * @since 03/04/2024
  **/
-@Document(indexName = "kafka-employee")
+@Document(indexName = "kafka_employee")
 public record Employee(
         @Id
         Long id,

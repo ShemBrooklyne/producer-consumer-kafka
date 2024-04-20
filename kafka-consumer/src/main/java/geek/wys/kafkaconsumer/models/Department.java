@@ -10,7 +10,6 @@ import java.util.List;
  * @author shem.mwangi
  * @since 03/04/2024
  **/
-@Document(indexName = "kafka-employee")
 public record Department(
         @Field(type = FieldType.Text, name = "departmentName")
         String departmentName,

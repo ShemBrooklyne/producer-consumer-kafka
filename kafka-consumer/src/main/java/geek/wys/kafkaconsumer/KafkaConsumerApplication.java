@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.kafka.annotation.KafkaListener;
 
 /**
@@ -16,12 +17,12 @@ import org.springframework.kafka.annotation.KafkaListener;
 @SpringBootApplication
 public class KafkaConsumerApplication {
 
-    final
-    KafkaEmployeeService kafkaEmployeeService;
+    private final KafkaEmployeeService kafkaEmployeeService;
 
     public KafkaConsumerApplication(KafkaEmployeeService kafkaEmployeeService) {
         this.kafkaEmployeeService = kafkaEmployeeService;
     }
+
 
     public static void main(String[] args) {
         SpringApplication.run(KafkaConsumerApplication.class, args);
@@ -29,7 +30,7 @@ public class KafkaConsumerApplication {
 
     @KafkaListener(topics = "geekwys-employees", groupId = "geekwys")
     public void listen(Employee employee) {
-        log.info("Received Employee information: {}", employee.toString());
+        log.info("Received Employee information: {}", employee);
         kafkaEmployeeService.saveEmployee(employee);
     }
 
